@@ -1,24 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import Router from './routing/Router'
+import {AppBar, Typography, Box} from '@material-ui/core'
+import CssBaseline from '@material-ui/core/CssBaseline'
+import MemoryIcon from '@material-ui/icons/Memory'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <CssBaseline />
+    <Box>
+      <AppBar position="static">
+        <Box alignItems="center" display="flex" m={1}>
+          <Typography variant="h5">Mem</Typography>
+          <MemoryIcon />
+          <Typography variant="h5">App</Typography>
+        </Box>
+      </AppBar>
+      <Router />
+    </Box>
+    </>
   );
 }
 
