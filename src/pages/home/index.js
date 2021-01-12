@@ -1,16 +1,22 @@
 import React from 'react'
 import { useHistory } from "react-router-dom"
 import { useForm } from "react-hook-form"
+import { useDispatch } from 'react-redux'
 import { Box, TextField, Button } from '@material-ui/core'
 
 import ROUTING_PATHS from "../../routing/routes"
+import { addName } from "../../redux/reducers/user"
 
 const Home = () => {
   const { register, handleSubmit } = useForm()
   const history = useHistory()
+  const dispatch = useDispatch()
 
-  const onStartGameHandler = (values) => {
+  const onStartGameHandler = ({name}) => {
     history.push(ROUTING_PATHS.game)
+    dispatch ({type: addName.type, payload: {
+      name
+    }})
   }
 
   return (

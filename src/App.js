@@ -3,6 +3,9 @@ import { AppBar, Typography, Box, Container } from '@material-ui/core'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import MemoryIcon from '@material-ui/icons/Memory'
 import { withStyles } from '@material-ui/core/styles'
+import { Provider } from 'react-redux'
+
+import store from './redux/store'
 
 const StyledContainer = withStyles({
   root: {
@@ -14,18 +17,20 @@ function App() {
   return (
     <>
     <CssBaseline />
-    <Box>
-      <AppBar position="static">
-        <Box alignItems="center" display="flex" m={1}>
-          <Typography variant="h5">Mem</Typography>
-          <MemoryIcon />
-          <Typography variant="h5">App</Typography>
-        </Box>
-      </AppBar>
-      <StyledContainer maxWidth="sm">
-        <Router />
-      </StyledContainer>
-    </Box>
+    <Provider store={store}>
+      <Box>
+        <AppBar position="static">
+          <Box alignItems="center" display="flex" m={1}>
+            <Typography variant="h5">Mem</Typography>
+            <MemoryIcon />
+            <Typography variant="h5">App</Typography>
+          </Box>
+        </AppBar>
+        <StyledContainer maxWidth="sm">
+          <Router />
+        </StyledContainer>
+      </Box>
+    </Provider>
     </>
   );
 }
