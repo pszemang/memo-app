@@ -6,12 +6,7 @@ import {
 } from "react-router-dom"
 
 import { Game, Home, Scoreboard, NotFound } from "../pages"
-
-const ROUTING_PATHS = {
-  home: '/',
-  game: '/game',
-  scoreboard: '/scoreboard',
-}
+import ROUTING_PATHS from "./routes"
 
 const Router = () =>
   <BrowserRouter>

@@ -1,7 +1,14 @@
 import Router from './routing/Router'
-import {AppBar, Typography, Box} from '@material-ui/core'
+import { AppBar, Typography, Box, Container } from '@material-ui/core'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import MemoryIcon from '@material-ui/icons/Memory'
+import { withStyles } from '@material-ui/core/styles'
+
+const StyledContainer = withStyles({
+  root: {
+    padding: 16
+  },
+})(Container);
 
 function App() {
   return (
@@ -15,7 +22,9 @@ function App() {
           <Typography variant="h5">App</Typography>
         </Box>
       </AppBar>
-      <Router />
+      <StyledContainer maxWidth="sm">
+        <Router />
+      </StyledContainer>
     </Box>
     </>
   );
