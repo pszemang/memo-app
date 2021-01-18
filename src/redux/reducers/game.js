@@ -1,6 +1,6 @@
 import { createReducer, createAction } from '@reduxjs/toolkit'
 
-import generateGameBoard from '../../helpers/generateGameBoard'
+import { generateGameBoard, POSSIBLE_KEYS } from '../../helpers/generateGameBoard'
 
 export const generateBoard = createAction('GENERATE_BOARD')
 export const addHit = createAction('ADD_HIT')
@@ -11,7 +11,7 @@ const gameReducer = createReducer(initialState, {
   [generateBoard.type]: () => ({...initialState, board: generateGameBoard()}),
   [addHit.type]: (state, { payload }) => {
     state.hits.push(payload)
-    if (state.hits.length === 8) {
+    if (POSSIBLE_KEYS.length === 8) {
       state.isFinished = true
     }
   }
