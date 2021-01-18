@@ -8,16 +8,18 @@ import ROUTING_PATHS from "../../routing/routes"
 import { addName } from "../../redux/reducers/user"
 
 const Home = () => {
-  const { register, handleSubmit } = useForm()
+  const { register, handleSubmit, errors } = useForm()
   const history = useHistory()
   const dispatch = useDispatch()
 
   const onStartGameHandler = ({name}) => {
-    history.push(ROUTING_PATHS.game)
     dispatch ({type: addName.type, payload: {
       name
     }})
+    history.push(ROUTING_PATHS.game)
   }
+
+  const hasInputError = !!errors.name
 
   return (
     <Box
@@ -28,7 +30,13 @@ const Home = () => {
       component="form"
       onSubmit={handleSubmit(onStartGameHandler)}
     >
-      <TextField name="name" label="User name" inputRef={register} />
+      <TextField
+        name="name"
+        label="User name"
+        inputRef={register({ required: true})}
+        error={hasInputError}
+        helperText={hasInputError && "Name is required."}
+      />
       <Button variant="contained" color="primary" type="submit">Start</Button>
     </Box>
   )
