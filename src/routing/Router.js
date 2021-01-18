@@ -1,15 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {
-  BrowserRouter,
   Switch,
   Route,
 } from "react-router-dom"
+import { useHistory } from "react-router-dom"
 
 import { Game, Home, Scoreboard, NotFound } from "../pages"
 import ROUTING_PATHS from "./routes"
 
-const Router = () =>
-  <BrowserRouter>
+const Router = () => {
+  const history = useHistory()
+  useEffect(() => {
+    history.push(ROUTING_PATHS.home)
+  }, [history])
+  return (
     <Switch>
       <Route exact path={ROUTING_PATHS.home}>
         <Home />
@@ -24,6 +28,7 @@ const Router = () =>
         <NotFound />
       </Route>
     </Switch>
-  </BrowserRouter>
+  )
+}
 
 export default Router
