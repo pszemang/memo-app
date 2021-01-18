@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Box, Typography } from '@material-ui/core'
 import { useSelector, useDispatch } from 'react-redux'
 
+import { generateBoard } from "../../redux/reducers/game"
 import Board from './Board'
 
 const START_IN_SECONDS = 5
@@ -21,7 +22,7 @@ const Game = () => {
   }, [])
 
   useEffect(() => {
-    dispatch({type: 'GENERATE_BOARD'})
+    dispatch({ type: generateBoard.type })
   }, [dispatch])
 
   return (

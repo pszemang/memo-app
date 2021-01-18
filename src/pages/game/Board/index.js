@@ -6,6 +6,8 @@ import Timer from 'react-compound-timer'
 
 import Card from './Card'
 import ROUTING_PATHS from "../../../routing/routes"
+import { addScore } from "../../../redux/reducers/scoreboard"
+import { addHit } from "../../../redux/reducers/game"
 
 const Board = ({ game, user }) => {
   const [startTimestamp, setStartTimestamp] = useState(null)
@@ -28,7 +30,7 @@ const Board = ({ game, user }) => {
 
   useEffect(() => {
     if (game.isFinished) {
-      dispatch({type: 'ADD_SCORE', payload:{
+      dispatch({type: addScore.type, payload:{
         time: Date.now() - startTimestamp,
         name: user.name
       }})
@@ -38,7 +40,7 @@ const Board = ({ game, user }) => {
 
   useEffect(() => {
     if(!!firstChoice && firstChoice.key === secondChoice?.key) {
-      dispatch({type: 'ADD_HIT', payload: firstChoice.key})
+      dispatch({type: addHit.type, payload: firstChoice.key})
     }
     if(!!firstChoice && !!secondChoice && firstChoice.key !== secondChoice.key) {
       setTimeout(() => {
