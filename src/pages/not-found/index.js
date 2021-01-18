@@ -1,7 +1,9 @@
 import React from 'react'
-import { Box } from '@material-ui/core'
+import { Box, Typography } from '@material-ui/core'
 
 const NotFound = () =>
-  <Box>Page not found</Box>
+  <Box textAlign="center">
+    <Typography variant="h3">Page not found</Typography>
+  </Box>
 
 export default NotFound
